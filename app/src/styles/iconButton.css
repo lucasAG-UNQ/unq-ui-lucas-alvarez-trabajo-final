@@ -1,0 +1,22 @@
+button{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    transition: .5s;
+}
+button:hover{
+    background-color: rgba(0, 0, 0, .5);
+    transition: .5s;
+}
+button:active{
+    background-color: rgba(0, 255, 98, 0.5);
+    
+    transition: .01s;
+}
+
+img{
+    width: 10vh;
+    border-radius: 50%;
+}
