@@ -1,10 +1,12 @@
 import { useEffect,useState } from "react";
 import Choices from "../atoms/choices";
 import IconButton from "../atoms/iconButton";
+import "../../styles/vsCpu.css"
 
 const VsCPU=()=>{
 
     const [score,setScore]=useState(0);
+    const [error,setError]=useState('');
     const [playerChioce,setPlayerChoice]=useState(null);
     const [cpuChoice,setCpuChoice]=useState(null);
     const [result,setResult]=useState(null);
@@ -42,7 +44,7 @@ const VsCPU=()=>{
             <header>Let's Play</header>
             <div className="buttonsContainer">
                 {Choices.map( (choice)=> {
-                    <IconButton srcImg={choice.iconSrc} />
+                    <IconButton id={choice.id} srcImg={choice.iconSrc} />
                 } )}
             </div>
         </div>
