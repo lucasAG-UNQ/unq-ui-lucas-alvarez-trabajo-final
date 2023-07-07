@@ -1,13 +1,16 @@
 button{
+    background-color: transparent;
     display: flex;
     margin: 0;
     padding: 0;
     border-radius: 50%;
     justify-content: center;
     transition: .5s;
+    border: 1px solid black;
+    background-color: white;
 }
 button:hover{
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(255, 255, 255, .5);
     transition: .5s;
 }
 button:active{
@@ -17,6 +20,23 @@ button:active{
 }
 
 img{
-    width: 10vh;
+    margin: 0;
+    padding: 0;
+    border: 1px solid white;
+    width: 5em;
     border-radius: 50%;
+}
+
+@media screen and (max-width: 900px) {
+    
+    img{
+        width: 3em;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    
+    img{
+        width: 9em;
+    }
 }

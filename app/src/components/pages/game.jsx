@@ -1,5 +1,6 @@
 import IconButton from "../atoms/iconButton";
 import VsCPU from "../organisms/vsCpu"
+import rockIco from '../../icons/Rock.ico'
 
 function Game() {
   return (
@@ -8,7 +9,6 @@ function Game() {
         Piedra papel tijeras lagarto spock
       </header>
       <VsCPU/>
-      <IconButton srcImg={"https://raw.githubusercontent.com/JLChamberlain/RPSLS/master/IMG/Favicons/favicon1.ico"}/>
     </div>
   );
 }
