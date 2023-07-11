@@ -1,5 +1,5 @@
-import IconButton from "../atoms/iconButton";
-import VsCPU from "../organisms/vsCpu"
+import IconButton from "./iconButton";
+import VsCPU from "../pages/vsCpu"
 import rockIco from '../../icons/Rock.ico'
 
 function Game({children}) {

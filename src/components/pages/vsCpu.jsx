@@ -31,9 +31,9 @@ const VsCPU=()=>{
         if(result===0){
             return 'Draw'
         }else if(result===1){
-            return `Player won with ${Choices[playerChoice].name} to ${Choices[cpuChoice].name}`
+            return `Player won with ${Choices[playerChoice].name} to CPU's ${Choices[cpuChoice].name}`
         }else if(result===2){
-            return `Player lost to ${Choices[cpuChoice].name} with ${Choices[playerChoice].name}`
+            return `CPU won with ${Choices[playerChoice].name} to Player's ${Choices[cpuChoice].name}`
         }
     }
 
