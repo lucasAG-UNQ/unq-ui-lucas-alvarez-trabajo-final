@@ -1,4 +1,4 @@
-button{
+.buttonImageContainer{
     background-color: transparent;
     display: flex;
     margin: 0;
@@ -8,35 +8,42 @@ button{
     transition: .5s;
     border: 1px solid black;
     background-color: white;
+    width: 5em;
 }
-button:hover{
+.buttonImageContainer:hover{
     background-color: rgba(255, 255, 255, .5);
     transition: .5s;
 }
-button:active{
+.buttonImageContainer:active{
     background-color: rgba(0, 255, 98, 0.5);
     
     transition: .01s;
 }
+.buttonNotSelected:disabled{
+    background-color: gray;
+}
+.buttonSelected:disabled{
+    background-color: lightskyblue;
+}
 
-img{
+.imgButton{
     margin: 0;
     padding: 0;
     border: 1px solid white;
-    width: 5em;
     border-radius: 50%;
+    width: inherit;
 }
 
 @media screen and (max-width: 900px) {
-    
-    img{
+
+    .buttonImageContainer{
         width: 3em;
     }
 }
 
 @media screen and (min-width: 1600px) {
     
-    img{
+    .buttonImageContainer{
         width: 9em;
     }
 }

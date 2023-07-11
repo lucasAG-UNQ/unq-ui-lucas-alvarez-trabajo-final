@@ -1,9 +1,14 @@
 import "../../styles/iconButton.css";
 
-const IconButton=({action, disabled, srcImg})=>{
+const IconButton=({action, selected, disabled, srcImg})=>{
+
+    const isSelected=()=>{
+        return selected? "buttonSelected":"buttonNotSelected"
+    }
+
     return(
-        <button onClick={action} disabled={disabled}>
-            <img src={srcImg} />
+        <button className={"buttonImageContainer "+isSelected()} onClick={action} disabled={disabled}>
+            <img className="imgButton" src={srcImg} />
         </button>
     )
 }

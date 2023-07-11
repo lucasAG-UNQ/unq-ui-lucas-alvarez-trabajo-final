@@ -2,18 +2,18 @@ import { useEffect,useState } from "react";
 import Choices from "../atoms/choices";
 import IconButton from "../atoms/iconButton";
 import "../../styles/vsCpu.css"
+import GameContainer from "../atoms/gameContainer";
 
 const VsCPU=()=>{
 
     const [score,setScore]=useState(0);
-    const [error,setError]=useState('');
+    const [cpuScore,setCpuScore]=useState(0);
     const [playerChoice,setPlayerChoice]=useState(null);
     const [playerChoiceMessage,setPlayerChoiceMessage]=useState('');
     const [cpuChoice,setCpuChoice]=useState(null);
     const [cpuChoiceMessage,setCpuChoiceMessage]=useState(null);
     const [result,setResult]=useState(null);
     const [disabled,setDisabled]=useState(false);
-    const [turn,setTurn]=useState(1);
 
     useEffect(()=>{
         if(playerChoice!=null){
@@ -28,7 +28,6 @@ const VsCPU=()=>{
     },[cpuChoice])
 
     const showResult=()=>{
-        console.log(result)
         if(result===0){
             return 'Draw'
         }else if(result===1){
@@ -42,9 +41,8 @@ const VsCPU=()=>{
         setPlayerChoice(choice);
         setDisabled(true)
         const randomChoice = Math.floor(Math.random()*5);
-        console.log(getResult(playerChoice,randomChoice))
-        setTimeout(()=> setCpuChoice(randomChoice),1500);
-        setTimeout(()=>setResult(getResult(playerChoice,cpuChoice)),2500);
+        setTimeout(()=>setCpuChoice(randomChoice),1000);
+        setTimeout(()=>setResult(getResult(choice,randomChoice)),2000);
         clearTimeout();
     }
 
@@ -52,23 +50,34 @@ const VsCPU=()=>{
         if(pChoice===cpuChoice){
             return 0;
         }else if(Choices[pChoice].beats.includes(cpuChoice)){
+            setScore(score+1);
             return 1;
         }else if(Choices[cpuChoice].beats.includes(pChoice)){
+            setCpuScore(cpuScore+1);
             return 2;
-        }else{
-            setError("Ocurrió algo inesperado");
-            return 3;
         }
     }
 
+    const resetStates=()=>{
+        setResult(null);
+        setCpuChoice(null);
+        setPlayerChoice(null);
+        setDisabled(false);
+    }
+
     return(
-        <div className="GameContainer bg-dark container-fluid mb-3">
-            <header>Let's Play</header>
-            <div className="buttonsContainer">
+        <GameContainer>
+            <h4>Let's Play</h4>
+            <div className="d-flex flex-row w-75 justify-content-between">
+                <p>Player wins: {score}</p>
+                <p>Cpu wins: {cpuScore}</p>
+            </div>
+            <div className="mb-3 buttonsContainer">
                 {Choices.map( (choice)=> {
                     return (<IconButton 
                         action={()=>handleResult(choice.id)} 
-                        dissabled={disabled}
+                        disabled={disabled}
+                        selected={choice.id===playerChoice}
                         key={choice.id} 
                         id={choice.id} 
                         srcImg={choice.iconSrc} 
@@ -77,8 +86,13 @@ const VsCPU=()=>{
             </div>
             {playerChoice!=null && <p>{playerChoiceMessage}</p>}
             {cpuChoice!=null && <p>{cpuChoiceMessage}</p>}
-            {result!=null && <p>{showResult()}</p>}
-        </div>
+            {result!=null &&
+                <div className="d-flex flex-column align-items-center">
+                    <p>{showResult()}</p>
+                    <button className="mb-3 border-0 bg-info text-white rounded" onClick={resetStates}>Play Again</button>
+                </div>
+            }
+        </GameContainer>
 
     )
 }
